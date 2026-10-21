@@ -8,6 +8,18 @@ change and will say so at the top of its section; patch releases never do. The
 other contract that matters is `min_version` in `theme.toml` — raising it is
 always a minor bump at least.
 
+## Unreleased
+
+### Fixed
+
+- **Long URLs and inline code no longer push a post sideways on a phone.** A
+  bare URL in a footnote or a long identifier in inline `code` has no break
+  opportunity, so at 375px it widened the page and the whole post scrolled
+  horizontally. Links and inline code in `.prose` now take
+  `overflow-wrap: break-word`, which breaks such a word only when it would
+  otherwise overflow. Code blocks, tables and anything that already fits are
+  laid out exactly as before.
+
 ## 0.3.0 — 2026-09-22
 
 A post already in a series looks different by default: its aside becomes
