@@ -836,11 +836,16 @@ a:hover { color: var(--accent); }
   scroll-margin-top: calc(var(--nav-h) + 16px);
 }
 .prose p { text-wrap: pretty; }
+/* A bare URL has no break opportunities, so on a phone a long one (typical in
+   footnotes) pushes the whole page sideways. break-word rather than anywhere:
+   it only breaks a word that would overflow, and leaves min-content alone, so
+   table columns and desktop line breaks do not move. */
 .prose a {
   color: var(--accent);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
+  overflow-wrap: break-word;
 }
 .prose a:hover { text-decoration-thickness: 2px; }
 .prose ul, .prose ol { padding-left: 24px; display: flex; flex-direction: column; gap: 8px; }
@@ -864,12 +869,15 @@ a:hover { color: var(--accent); }
   border-bottom: 1px solid var(--line);
 }
 .prose th { font-weight: 800; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+/* Same as links: a long identifier would otherwise overflow on a phone. Code
+   blocks are excluded by the selector and scroll in their own box. */
 .prose :not(pre) > code {
   font-family: var(--mono);
   font-size: 0.85em;
   background: var(--surface);
   border-radius: 6px;
   padding: 2px 6px;
+  overflow-wrap: break-word;
 }
 
 /* Blockquote */
