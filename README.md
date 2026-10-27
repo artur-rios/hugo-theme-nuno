@@ -1,5 +1,11 @@
 # nuno
 
+> [!NOTE]
+> This is the real, open-source code of hugo-theme-nuno. Its home is Forgejo, at
+> https://git.techcraftsmen.net/artur-rios/hugo-theme-nuno; the copy on GitHub is a read-only mirror, for viewing only, and
+> its issues and pull requests are not followed. If you want to contribute, email me at
+> arturdev@duck.com.
+
 A minimalist, dark-first Hugo theme. Nunito only, warm brown or deep green
 ground, one accent colour, a cycling typed masthead, ⌘K client-side search, a
 sticky table of contents, copy buttons on code, and optional sections for
