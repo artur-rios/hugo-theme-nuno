@@ -1,0 +1,17 @@
+# What Jenkins checks for this repository, read by the pipeline of the yggdrasil installation that runs it
+# (yggdrasil's docs/catalog.md, "Repository pipeline file", has every field). It is data, never code: images
+# (pinned by version and digest, which Renovate keeps up to date), commands, globs and the names of Jenkins
+# credentials. The commands are the scripts under ci/, which run from the repository's root, so you can run them on
+# your machine too. Nothing is deployed or released from this fork: the checks run on every pull request and push.
+#
+# Check it where the catalog is, in the yggdrasil checkout:
+#   python3 scripts/pipeline_config.py describe hugo-theme-nuno <this repository's checkout>
+
+checks:
+  lint:                                  # the theme's .editorconfig, checked by editorconfig-checker
+    image: mstruebing/editorconfig-checker:4.0.2@sha256:2ba6232bfa0058f72f5f7d7816711590aa764afab1542af30b3ecb4553587918
+    run: sh ci/lint.sh
+
+  build:                                 # .github/workflows/build.yml: build exampleSite with the theme, fail on any WARN
+    image: hugomods/hugo:debian-node-lts-0.165.0@sha256:eef6a12572c8cf3fea72fb034606f3e6a0821368682139378608eabc94e67c87
+    run: sh ci/build.sh
